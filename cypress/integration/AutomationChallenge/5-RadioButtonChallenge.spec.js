@@ -30,10 +30,11 @@ describe("Number Box Challenge", () => {
     cy.get("#confirm-radio-challenge").click();
     cy.get("#conf-msg").should("have.text", "Business Analystic is selected!");
 
+    cy.reload();
     cy.get("#profession-writer").click();
     cy.get("#confirm-radio-challenge").click();
-    cy.url("https://software-testers.gitlab.io/challenges/automation-challenges/success.html");
-    //cy.get("#conf-msg").should("have.text", "Technical Writer is selected!");
+   
+    cy.get("#conf-msg").should("have.text", "Technical Writer is selected!");
   });
 
   it("3 - To solve a challenge Confirm all professions at least once!", () => {

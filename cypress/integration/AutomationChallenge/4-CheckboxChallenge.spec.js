@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
 
-describe("Number Box Challenge", () => {
+describe("Checkbox challenge", () => {
   beforeEach(() => {
     cy.visit(
       "https://software-testers.gitlab.io/challenges/automation-challenges/index.html"
     );
-    cy.get("body > main > section > div > ul > li:nth-child(4) > a").click();
+    cy.get("a[href='check-box.html']").click();
   });
 
   it("1 - Verify that 1, 3, 5 checkboxes are checked by default!", () => {

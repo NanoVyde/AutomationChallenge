@@ -5,45 +5,38 @@ describe("Text Box Challenge", () => {
     cy.visit(
       "https://software-testers.gitlab.io/challenges/automation-challenges/index.html"
     );
-    cy.get("body > main > section > div > ul > li:nth-child(1) > a").click();
+    cy.get("a[href='text-box.html']").click();
   });
 
   it("1 - Verify Error Message when nothing is entered!", () => {
     cy.get("#verify-btn").click();
-    cy.get("#conf-msg").should("have.text", "No value entered in Name field!");
+    cy.confirmMessage("No value entered in Name field!");
   });
 
   it("2 - Verify Error Message when less than 2 letters are entered!", () => {
     cy.get("#first-name").type("a");
     cy.get("#verify-btn").click();
-    cy.get("#conf-msg").should(
-      "have.text",
-      "Name has to have at least 2 letters!"
-    );
+    cy.confirmMessage("Name has to have at least 2 letters!");
   });
 
   it("3 - Verify Error Message when non letters are entered! ", () => {
     cy.get("#first-name").type("123");
     cy.get("#first-name").type("/'[");
     cy.get("#verify-btn").click();
-    cy.get("#conf-msg").should(
-      "have.text",
-      "Name can only have letters!"
-    );
+    cy.confirmMessage("Name can only have letters!");
   });
 
   it("4 - Verify Error Message when more than 30 letters are entered!", () => {
     cy.get("#first-name").type("QwertyuiopAsdfghjklZxcvbnmqwerT");
     cy.get("#verify-btn").click();
-    cy.get("#conf-msg").should(
-      "have.text",
-      "Name cannot have more than 30 letters!"
-    );
+    cy.confirmMessage("Name cannot have more than 30 letters!");
   });
 
   it("5 - To solve a challenge simply write your name and click VERIFY!", () => {
     cy.get("#first-name").type("Alvyde");
     cy.get("#verify-btn").click();
-    cy.url("https://software-testers.gitlab.io/challenges/automation-challenges/success.html");
+    cy.url(
+      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
+    );
   });
 });
