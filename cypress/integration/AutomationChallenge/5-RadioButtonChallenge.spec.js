@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("Number Box Challenge", () => {
+describe("Radio Button Challenge", () => {
   beforeEach(() => {
     cy.visit(
       "https://software-testers.gitlab.io/challenges/automation-challenges/index.html"

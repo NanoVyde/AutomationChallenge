@@ -20,9 +20,7 @@ describe("Checkbox challenge", () => {
     cy.get(
       "body > section > div.center.checkboxes > div.checkboxes-box > input.checkbox2"
     ).should("not.be.checked");
-    cy.get(
-      "body > section > div.center.checkboxes > div.checkboxes-box > input[type=checkbox]:nth-child(7)"
-    ).should("not.be.checked");
+    cy.get("input:not([name])").first().should("not.be.checked");
   });
 
   it("3 - Verify Error Message when NO checkbox is selected!", () => {
@@ -32,7 +30,7 @@ describe("Checkbox challenge", () => {
     ).click();
     cy.get("#ba").click();
     cy.get("#confirm-btn").click();
-    cy.get("#conf-msg").should("have.text", "No checkbox is selected!");
+    cy.confirmMessage("No checkbox is selected!");
   });
 
   it("4 - Verify Error Message when checkbox combination is not correct! ", () => {
@@ -43,8 +41,7 @@ describe("Checkbox challenge", () => {
       "body > section > div.center.checkboxes > div.checkboxes-box > input[type=checkbox]:nth-child(7)"
     ).click();
     cy.get("#confirm-btn").click();
-    cy.get("#conf-msg").should(
-      "have.text",
+    cy.confirmMessage(
       "The combination of selected profession(s) is NOT correct!"
     );
   });
