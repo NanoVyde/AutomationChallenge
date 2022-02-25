@@ -14,27 +14,26 @@ describe("Radio Button Challenge", () => {
     cy.get("#profession-analyst").should("not.be.selected");
     cy.get("#profession-writer").should("not.be.selected");
     cy.get("#confirm-radio-challenge").click();
-    cy.get("#conf-msg").should("have.text", "No option is selected!");
+    cy.confirmMessage("No option is selected!");
   });
 
   it("2 - Select each role + Confirm & verify text in message '[Role] is selected!'", () => {
     cy.get("#profession-tester").click();
     cy.get("#confirm-radio-challenge").click();
-    cy.get("#conf-msg").should("have.text", "QA Test Engineer is selected!");
+    cy.confirmMessage("QA Test Engineer is selected!");
 
     cy.get("#profession-developer").click();
     cy.get("#confirm-radio-challenge").click();
-    cy.get("#conf-msg").should("have.text", "Software Developer is selected!");
+    cy.confirmMessage("Software Developer is selected!");
 
     cy.get("#profession-analyst").click();
     cy.get("#confirm-radio-challenge").click();
-    cy.get("#conf-msg").should("have.text", "Business Analystic is selected!");
+    cy.confirmMessage("Business Analystic is selected!");
 
     cy.reload();
     cy.get("#profession-writer").click();
     cy.get("#confirm-radio-challenge").click();
-   
-    cy.get("#conf-msg").should("have.text", "Technical Writer is selected!");
+    cy.confirmMessage("Technical Writer is selected!");
   });
 
   it("3 - To solve a challenge Confirm all professions at least once!", () => {
@@ -50,6 +49,8 @@ describe("Radio Button Challenge", () => {
     cy.get("#profession-writer").click();
     cy.get("#confirm-radio-challenge").click();
 
-    cy.url("https://software-testers.gitlab.io/challenges/automation-challenges/success.html");
+    cy.url(
+      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
+    );
   });
 });
