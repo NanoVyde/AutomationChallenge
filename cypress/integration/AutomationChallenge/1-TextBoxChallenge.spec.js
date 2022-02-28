@@ -34,9 +34,6 @@ describe("Text Box Challenge", () => {
 
   it("5 - To solve a challenge simply write your name and click VERIFY!", () => {
     cy.get("#first-name").type("Alvyde");
-    cy.get("#verify-btn").click();
-    cy.url(
-      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
-    );
+    cy.successConfirmation("#verify-btn");
   });
 });

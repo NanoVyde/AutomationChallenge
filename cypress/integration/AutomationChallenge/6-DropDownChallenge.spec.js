@@ -30,9 +30,6 @@ describe("Drop Down Challenge", () => {
 
   it("3 - To solve a challenge select the country Lithuania from drop down list and VERIFY it!", () => {
     cy.get("#country").select("Lithuania");
-    cy.get("#dropdown-verify-btn").click({ force: true });
-    cy.url(
-      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
-    );
+    cy.successConfirmation("#dropdown-verify-btn");
   });
 });

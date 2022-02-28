@@ -52,7 +52,6 @@ describe("Login Challenge", () => {
     cy.get("#sex-male").should("not.be.selected");
     cy.get("#mobile-number").type("123456789");
     cy.get("#terms-checkbox").click("");
-    cy.get("#submit-btn").click();
-    cy.url("https://software-testers.gitlab.io/challenges/automation-challenges/success.html");
+    cy.successConfirmation("#submit-btn");
   });
 });

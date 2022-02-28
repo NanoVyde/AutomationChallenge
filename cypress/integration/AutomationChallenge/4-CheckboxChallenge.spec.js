@@ -45,9 +45,6 @@ describe("Checkbox challenge", () => {
     cy.get("input[name='checkbox3']").should("be.checked");
     cy.get("input:not([name])").first().click("");
     cy.get("#ba").click("");
-    cy.get("#confirm-btn").click();
-    cy.url(
-      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
-    );
+    cy.successConfirmation("#confirm-btn");
   });
 });

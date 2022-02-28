@@ -27,9 +27,6 @@ describe("Number Box Challenge", () => {
 
   it("4 - To solve a challenge enter the number between 0 - 100 & click VERIFY!", () => {
     cy.get("#number-box").type("23");
-    cy.get("#number-verify").click();
-    cy.url(
-      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
-    );
+    cy.successConfirmation("#number-box");
   });
 });

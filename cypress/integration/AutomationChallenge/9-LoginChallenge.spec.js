@@ -39,11 +39,6 @@ describe("Login Challenge", () => {
   it("5 - To solve a challenge click Log in when Username & Password are correctly filled!", () => {
     cy.get("#user-name").type("Username");
     cy.get("#password").type("abcd1234");
-    cy.get("#login-btn").click();
-
-    cy.url().should(
-      "include",
-      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
-    );
+    cy.successConfirmation("#login-btn");
   });
 });

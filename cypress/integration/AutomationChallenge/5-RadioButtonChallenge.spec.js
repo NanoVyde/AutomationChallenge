@@ -47,10 +47,6 @@ describe("Radio Button Challenge", () => {
     cy.get("#confirm-radio-challenge").click();
 
     cy.get("#profession-writer").click();
-    cy.get("#confirm-radio-challenge").click();
-
-    cy.url(
-      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
-    );
+    cy.successConfirmation("#confirm-radio-challenge");
   });
 });

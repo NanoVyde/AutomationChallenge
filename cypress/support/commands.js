@@ -15,6 +15,14 @@ Cypress.Commands.add("confirmMessage", (message) => {
   cy.get("#conf-msg").should("have.text", message);
 });
 
+Cypress.Commands.add("successConfirmation", (buttonId) => {
+  cy.get(buttonId).click();
+  cy.url().should(
+    "include",
+    "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
+  );
+});
+
 //
 //
 // -- This is a child command --

@@ -25,9 +25,6 @@ describe("Hamburger Menu challenge", () => {
 
   it("2 - To solve a challenge, select the option VERIFY ME", () => {
     cy.get("a[href='javascript:void(0);']").click();
-    cy.get("#hamburger-menu-verify").click();
-    cy.url(
-      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
-    );
+    cy.successConfirmation("#hamburger-menu-verify");
   });
 });
