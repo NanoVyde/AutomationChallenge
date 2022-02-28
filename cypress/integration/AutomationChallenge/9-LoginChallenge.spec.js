@@ -5,24 +5,43 @@ describe("Login Challenge", () => {
     cy.visit(
       "https://software-testers.gitlab.io/challenges/automation-challenges/index.html"
     );
-    cy.get("body > main > section > div > ul > li:nth-child(9) > a").click();
+    cy.get("a[href='login.html']").click();
   });
 
-  it("1 - Click Log in when nothing is entered. Verify the message! ", () => {
+  it("1 - Click Log in when nothing is entered. Verify the message!", () => {
     cy.get("#user-name").should("not.have.text");
     cy.get("#password").should("not.have.text");
     cy.get("#login-btn").click();
-    cy.get("#conf-msg").should(
-      "have.text",
-      "You have NOT filled Username field"
-    );
+    cy.confirmMessage("You have NOT filled Username field");
   });
 
   it("2 - Click Log in when Username is filled & Password is empty. Verify the message!", () => {
-    cy.get("body > section > div.topnav.container > a").click("");
-    cy.get("#hamburger-menu-verify").click();
-    cy.url(
-      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
-    );
+    cy.get("#user-name").type("Username");
+    cy.get("#password").should("not.have.text");
+    cy.get("#login-btn").click();
+    cy.confirmMessage("Either password is incorrect or not filled!");
   });
+
+  it("3 - Click Log in when Username is NOT filled & Password is filled. Verify the message!", () => {
+    cy.get("#user-name").should("not.have.text");
+    cy.get("#password").type("Password");
+    cy.get("#login-btn").click();
+    cy.confirmMessage("You have NOT filled Username field");
+  });
+
+  it("4 - Click Log in when Username is filled but Password is invalid. Verify the message!", () => {
+    cy.get("#user-name").type("Username");
+    cy.get("#password").type("suo");
+    cy.get("#login-btn").click();
+    cy.confirmMessage("Either password is incorrect or not filled!");
+  });
+
+  // it("5 - To solve a challenge click Log in when Username & Password are correctly filled!", () => {
+  //   cy.get("#user-name").type("Username");
+  //   cy.get("#password").type("Password");
+  //   cy.get("#login-btn").click();
+  //   cy.url(
+  //     "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
+  //   );
+  // })
 });
