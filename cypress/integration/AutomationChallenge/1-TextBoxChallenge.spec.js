@@ -20,8 +20,7 @@ describe("Text Box Challenge", () => {
   });
 
   it("3 - Verify Error Message when non letters are entered! ", () => {
-    cy.get("#first-name").type("123");
-    cy.get("#first-name").type("/'[");
+    cy.get("#first-name").type("123/'[");
     cy.get("#verify-btn").click();
     cy.confirmMessage("Name can only have letters!");
   });
