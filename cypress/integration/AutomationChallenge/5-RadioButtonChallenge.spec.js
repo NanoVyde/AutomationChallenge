@@ -5,7 +5,7 @@ describe("Radio Button Challenge", () => {
     cy.visit(
       "https://software-testers.gitlab.io/challenges/automation-challenges/index.html"
     );
-    cy.get("body > main > section > div > ul > li:nth-child(5) > a").click();
+    cy.get("a[href='radio-button.html']").click();
   });
 
   it("1 - Verify Error Message when NO option is selected!", () => {
