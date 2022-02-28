@@ -10,36 +10,29 @@ describe("Checkbox challenge", () => {
 
   it("1 - Verify that 1, 3, 5 checkboxes are checked by default!", () => {
     cy.get("#checkbox1").should("be.checked");
-    cy.get(
-      "body > section > div.center.checkboxes > div.checkboxes-box > input[type=checkbox]:nth-child(5)"
-    ).should("be.checked");
+    cy.get("input[name='checkbox3']").should("be.checked");
     cy.get("#ba").should("be.checked");
   });
 
   it("2 - Verify that 2, 4 checkboxes are NOT checked by default!", () => {
-    cy.get(
-      "body > section > div.center.checkboxes > div.checkboxes-box > input.checkbox2"
-    ).should("not.be.checked");
+    cy.get("input[name='checkbox2']").should("not.be.checked");
     cy.get("input:not([name])").first().should("not.be.checked");
   });
 
   it("3 - Verify Error Message when NO checkbox is selected!", () => {
     cy.get("#checkbox1").click();
-    cy.get(
-      "body > section > div.center.checkboxes > div.checkboxes-box > input[type=checkbox]:nth-child(5)"
-    ).click();
+    cy.get("input[name='checkbox3']").click("");
     cy.get("#ba").click();
     cy.get("#confirm-btn").click();
     cy.confirmMessage("No checkbox is selected!");
   });
 
   it("4 - Verify Error Message when checkbox combination is not correct! ", () => {
-    cy.get(
-      "body > section > div.center.checkboxes > div.checkboxes-box > input.checkbox2"
-    ).click();
-    cy.get(
-      "body > section > div.center.checkboxes > div.checkboxes-box > input[type=checkbox]:nth-child(7)"
-    ).click();
+    cy.get("#checkbox1").should("be.checked");
+    cy.get("input[name='checkbox2']").should("not.be.checked");
+    cy.get("input[name='checkbox3']").click("");
+    cy.get("input:not([name])").first().should("not.be.checked");
+    cy.get("#ba").should("be.checked");
     cy.get("#confirm-btn").click();
     cy.confirmMessage(
       "The combination of selected profession(s) is NOT correct!"
@@ -48,12 +41,9 @@ describe("Checkbox challenge", () => {
 
   it("5 - To solve a challenge select only checkboxes related to software testing roles + Confirm", () => {
     cy.get("#checkbox1").click("");
-    cy.get(
-      "body > section > div.center.checkboxes > div.checkboxes-box > input.checkbox2"
-    ).click("");
-    cy.get(
-      "body > section > div.center.checkboxes > div.checkboxes-box > input[type=checkbox]:nth-child(7)"
-    ).click();
+    cy.get("input[name='checkbox2']").click("");
+    cy.get("input[name='checkbox3']").should("be.checked");
+    cy.get("input:not([name])").first().click("");
     cy.get("#ba").click("");
     cy.get("#confirm-btn").click();
     cy.url(
