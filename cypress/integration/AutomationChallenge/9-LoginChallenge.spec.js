@@ -24,24 +24,26 @@ describe("Login Challenge", () => {
 
   it("3 - Click Log in when Username is NOT filled & Password is filled. Verify the message!", () => {
     cy.get("#user-name").should("not.have.text");
-    cy.get("#password").type("Password");
+    cy.get("#password").type("abcd1234");
     cy.get("#login-btn").click();
     cy.confirmMessage("You have NOT filled Username field");
   });
 
   it("4 - Click Log in when Username is filled but Password is invalid. Verify the message!", () => {
     cy.get("#user-name").type("Username");
-    cy.get("#password").type("suo");
+    cy.get("#password").type("abc");
     cy.get("#login-btn").click();
     cy.confirmMessage("Either password is incorrect or not filled!");
   });
 
-  // it("5 - To solve a challenge click Log in when Username & Password are correctly filled!", () => {
-  //   cy.get("#user-name").type("Username");
-  //   cy.get("#password").type("Password");
-  //   cy.get("#login-btn").click();
-  //   cy.url(
-  //     "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
-  //   );
-  // })
+  it("5 - To solve a challenge click Log in when Username & Password are correctly filled!", () => {
+    cy.get("#user-name").type("Username");
+    cy.get("#password").type("abcd1234");
+    cy.get("#login-btn").click();
+
+    cy.url().should(
+      "include",
+      "https://software-testers.gitlab.io/challenges/automation-challenges/success.html"
+    );
+  });
 });
