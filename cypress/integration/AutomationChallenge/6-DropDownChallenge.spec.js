@@ -9,15 +9,10 @@ describe("Drop Down Challenge", () => {
   });
 
   it("1 - Verify Error Message and Country when selected country is NOT Lithuania! ", () => {
-    // cy.get("#country > option:nth-child(13)").click();
-    cy.get("#country").click();
-    cy.select("option[value='Afganistan']").click();
+    cy.get("#country").should("have.value", "Afganistan");
+    cy.get("#country").select("Ukraine");
     cy.get("#dropdown-verify-btn").click();
-    cy.get("#conf-msg").should(
-      "have.text",
-      "Selected country is Afganistan, NOT Lithuania!"
-    );
-    //Ar cia reiktu value patikrinti drop down ir erorr mesage? ar tipo uztenka kaip virsui?
+    cy.confirmMessage("Selected country is Ukraine, NOT Lithuania!");
   });
   //#country > option:nth-child(29)
 

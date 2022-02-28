@@ -21,7 +21,7 @@ describe("Checkbox challenge", () => {
 
   it("3 - Verify Error Message when NO checkbox is selected!", () => {
     cy.get("#checkbox1").click();
-    cy.get("input[name='checkbox3']").click("");
+    cy.get("input[name='checkbox3']").click();
     cy.get("#ba").click();
     cy.get("#confirm-btn").click();
     cy.confirmMessage("No checkbox is selected!");
