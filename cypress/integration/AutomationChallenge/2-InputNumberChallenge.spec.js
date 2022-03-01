@@ -27,6 +27,6 @@ describe("Number Box Challenge", () => {
 
   it("4 - To solve a challenge enter the number between 0 - 100 & click VERIFY!", () => {
     cy.get("#number-box").type("23");
-    cy.successConfirmation("#number-box");
+    cy.successConfirmation("#number-verify");
   });
 });
